@@ -32,7 +32,7 @@ sed -i -e 's/%admin ALL=(ALL) ALL/%admin ALL=NOPASSWD:ALL/g' /etc/sudoers
 
 # Set the history format
 echo "## Setting up history format ##"
-echo -e '# history timestamp\nexport HISTTIMEFORMAT="%F %T  "' > /etc/profile.d/histformat.sh
+echo 'export HISTTIMEFORMAT="%F %T  "' > /etc/profile.d/histformat.sh
 chmod 0755 /etc/profile.d/histformat.sh
 
 # Set up vi as default editor
