@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 22, host: 2258
 
   # Forward X11
-  config.ssh.forward_x11 = true
+  #config.ssh.forward_x11 = true
 
   ## Using NFS as it has much better performance
   ## On linux install nfs-kernel-server, MacOS works by default
