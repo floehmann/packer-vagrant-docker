@@ -3,3 +3,5 @@
 .git
 *.box
 packer_cache
+*.log
+output-virtualbox-iso
