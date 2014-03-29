@@ -16,3 +16,4 @@ gpasswd -a vagrant docker
 # enable swap and cpu accounting
 cp /etc/default/grub /root/grub.orig
 sed -i -e 's!GRUB_CMDLINE_LINUX=""!GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"!g' /etc/default/grub
+update-grub
