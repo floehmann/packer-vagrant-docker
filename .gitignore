@@ -2,3 +2,4 @@
 .vagrant
 .git
 *.box
+packer_cache
