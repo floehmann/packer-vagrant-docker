@@ -67,16 +67,16 @@ The command above perform the following:
 **hello world daemon**
 
 ```
-CONTAINER_ID=$(docker run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done")
-docker logs $CONTAINER_ID
-docker attach --sig-proxy=false $CONTAINER_ID
+ID=$(docker run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done")
+docker logs $ID
+docker attach --sig-proxy=false $ID
 ```
 
 Exit from the container attachment by pressing Control-C. And check out the container status.
 
 ```
 docker ps
-docker stop $CONTAINER_ID
+docker stop $ID
 docker ps
 ```
 
