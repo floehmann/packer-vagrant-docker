@@ -42,9 +42,16 @@ To get info on your docker install run ```docker info```
 
 **hello world**
 
+Pull down a busybox image and check installed images.
+
 ```
 docker pull busybox
 docker images
+```
+
+Fire up a container and echo hello world.
+
+```
 docker run busybox /bin/echo hello world
 ```
 
