@@ -58,7 +58,7 @@ Fire up a container and echo hello world.
 docker run busybox /bin/echo hello world
 ```
 
-The command above perform the following:
+Here is an explanation of the above command: 
 
 * "docker run" run a command in a new container
 * "busybox" is the image we are running the command in.
