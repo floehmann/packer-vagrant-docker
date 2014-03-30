@@ -17,6 +17,7 @@ To start testing Docker and the other tools, you can clone this repo, change to 
 
 Using Packer this script  will download an Ubuntu 13.10 iso, create a Virtualbox image preconfigured for Docker, export it and register it as a Vagrant box.
 
+NOTE: Virtualbox has been configured with vboxnet0 of 192.168.56.0/24 with no DHCP enabled.
 
 ```
 git clone git@github.com:floehmann/packer-vagrant-docker.git
