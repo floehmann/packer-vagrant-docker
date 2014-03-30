@@ -44,7 +44,7 @@ To get info on your docker install run ```docker info```
 
 
 **hello world**
-----
+
 Pull down a busybox image and check installed images.
 
 ```
@@ -67,7 +67,7 @@ The command above perform the following:
 
 
 **hello world daemon**
-----
+
 ```
 ID=$(docker run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done")
 docker logs $ID
@@ -84,7 +84,7 @@ docker ps
 
 
 **interactive bash shell**
-----
+
 ```
 docker run -i -t ubuntu /bin/bash
 ```
@@ -105,7 +105,7 @@ ipcs
 
 
 **django app**
-----
+
 Ref:
 * http://developer.rackspace.com/blog/zero-to-peanut-butter-docker-time-in-78-seconds.html
 * https://github.com/kencochrane/django-docker
