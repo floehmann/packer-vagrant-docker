@@ -1,8 +1,12 @@
-##Notes on using Packer, Vagrant and Docker
+Notes on using Packer, Vagrant and Docker
+=========================================
 
-### Set up a docker test box
 
-Aside from the project docs the following write up is foundational to getting started and the configs and scripts are based on it:  http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
+#### Set up a docker test box
+
+
+The following write up was instrumental in getting started and the configs and scripts are based on it.
+http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
 
 
 For this excercise, I tested on OSX and installed [Packer](http://www.packer.io/intro/getting-started/setup.html), [Vagrant](https://docs.vagrantup.com/v2/installation/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads).
@@ -28,7 +32,7 @@ vagrant up
 vagrant ssh
 ```
 
-### Exploring docker
+#### Exploring docker
 
 Most of these examples are directly from the docker site where there is endless adventures of good docs.
 http://docs.docker.io/en/latest/examples/hello_world/
