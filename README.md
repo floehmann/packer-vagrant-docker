@@ -33,7 +33,7 @@ vagrant ssh
 
 #### Exploring docker
 
-Most of these examples are directly from the docker site where there is endless adventures of good docs.
+Most of these examples are directly from the docker site where there is an endless adventure of good docs.
 http://docs.docker.io/en/latest/examples/hello_world/
 
 
@@ -117,7 +117,10 @@ Figure out the port mapping docker uses for NAT
 docker port $ID 8000
 ```
 
-Now you can start up a browser on your host and connect to the docker vm on the port returned above.
+Aside from being an awesome presentation following has some great info on networking:
+http://www.slideshare.net/CohesiveFT/docker-meetup-london
 
+
+Now you can start up a browser on your host and connect to the docker vm on the port returned above.
 
 
