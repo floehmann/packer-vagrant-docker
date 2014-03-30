@@ -1,6 +1,5 @@
 Notes on using Packer, Vagrant and Docker
-=========================================
-
+-----------------------------------------
 
 #### Set up a docker test box
 
