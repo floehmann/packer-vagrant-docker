@@ -40,7 +40,7 @@ http://docs.docker.io/en/latest/examples/hello_world/
 To get info on your docker install run ```docker info```
 
 
-**hello world**
+** - hello world**
 
 ```
 docker pull busybox
@@ -50,13 +50,13 @@ docker run busybox /bin/echo hello world
 
 The commands above perform the following:
 
-    * "docker run" run a command in a new container
-    * "busybox" is the image we are running the command in.
-    * "/bin/echo" is the command we want to run in the container
-    * "hello world" is the input for the echo command
+* "docker run" run a command in a new container
+* "busybox" is the image we are running the command in.
+* "/bin/echo" is the command we want to run in the container
+* "hello world" is the input for the echo command
 
 
-**hello world daemon**
+** - hello world daemon**
 
 ```
 CONTAINER_ID=$(docker run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done")
@@ -73,7 +73,7 @@ docker ps
 ```
 
 
-**interactive bash shell**
+** - interactive bash shell**
 
 ```
 docker run -i -t ubuntu /bin/bash
@@ -94,7 +94,7 @@ ipcs
 ```
 
 
-**django app**
+** - django app**
 
 Ref:
 * http://developer.rackspace.com/blog/zero-to-peanut-butter-docker-time-in-78-seconds.html
