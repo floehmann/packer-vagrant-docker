@@ -1,10 +1,10 @@
 Notes on using Packer, Vagrant and Docker
 -----------------------------------------
 
-#### Set up a docker test box
+#### Set up a docker vagrant box using packer
 
 
-The following write up was instrumental in getting started and the configs and scripts are based on it.
+The following write up was instrumental in getting started and most of the configs and scripts are based on it.
 http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
 
 
