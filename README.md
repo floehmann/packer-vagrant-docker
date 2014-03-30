@@ -7,12 +7,12 @@ Notes on using Packer, Vagrant and Docker
 The following write up was instrumental in getting started and most of the configs and scripts are based on it.
 http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
 
-If you want to get started with docker this is a good place to start: [Getting started with Docker](https://www.docker.io/gettingstarted/)
 
 For this excercise, I tested on OSX and installed [Packer](http://www.packer.io/intro/getting-started/setup.html), [Vagrant](https://docs.vagrantup.com/v2/installation/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads).
 
+If you want to jump right to checking out docker this is a good place to start: [Getting started with Docker](https://www.docker.io/gettingstarted/)
 
-To start testing Docker, you can clone this repo, change to the repo directory and run the create_box script.
+To start testing Docker and the other tools, you can clone this repo, change to the repo directory and run the create_box script.
 
 Using Packer this script  will download an Ubuntu 13.10 iso, create a Virtualbox image preconfigured for Docker, export it and register it as a Vagrant box.
 
