@@ -7,6 +7,7 @@ Notes on using Packer, Vagrant and Docker
 The following write up was instrumental in getting started and most of the configs and scripts are based on it.
 http://blog.codeship.io/2013/11/07/building-vagrant-machines-with-packer.html
 
+If you want to get started with docker this is a good place to start: [Getting started with Docker](https://www.docker.io/gettingstarted/)
 
 For this excercise, I tested on OSX and installed [Packer](http://www.packer.io/intro/getting-started/setup.html), [Vagrant](https://docs.vagrantup.com/v2/installation/) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads).
 
