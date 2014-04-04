@@ -184,7 +184,7 @@ C /etc/group-
 C /etc/gshadow
 ```
 
-Let's create the image with docker commit.  
+Create the image with docker commit.  
 
 ```
 $ docker commit <container id> <your username>/redis  
