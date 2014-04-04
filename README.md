@@ -45,7 +45,7 @@ http://docs.docker.io/en/latest/examples/hello_world/
 To get info on your docker install run ```docker info```
 
 
-** - hello world**
+**- hello world**
 
 Pull down a busybox image and check installed images.
 
@@ -68,7 +68,7 @@ Here is an explanation of the above command:
 * "hello world" is the input for the echo command
 
 
-** - hello world daemon**
+**- hello world daemon**
 
 ```
 ID=$(docker run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done")
