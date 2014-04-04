@@ -135,3 +135,35 @@ http://www.slideshare.net/CohesiveFT/docker-meetup-london
 Now you can start up a browser on your host and connect to the docker vm on the port returned above.
 
 
+**create an image** 
+
+Ref: http://kencochrane.net/blog/2013/08/the-docker-guidebook/
+
+A couple definitions to clarify:
+* An "image" is a read only layer used to build a container. They do not change.
+* A "container" is basically a self contained runtime environment that is built using one or more images. You can commit your changes to a container and create an image.
+
+This exercise will demonstrate creating an image by commitng changes made to a container. 
+
+We are going to run /bin/bash with the -i and the -t flags. -i tells Docker to keep stdin open even if not attached, and -t is to allocate a pseudo-tty. Once we run the command, we will be connected into the container, and all commands at this point are running from inside the container.
+
+$ docker run -i -t ubuntu /bin/bash
+root@10d9a4ca1750:/# hostname
+10d9a4ca1750
+
+
+**removing all docker images and containers**
+
+It may be handy after a while to clean up.
+
+Remove all docker images:
+
+```
+docker rmi `docker images -a -q`
+```
+
+Remove all docker containers:
+
+```
+docker rm `docker ps -a -q`
+```
