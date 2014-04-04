@@ -85,7 +85,9 @@ docker ps
 ```
 
 
-**interactive bash shell**
+**- interactive bash shell**
+
+We are going to run /bin/bash with the -i and the -t flags. -i tells Docker to keep stdin open even if not attached, and -t is to allocate a pseudo-tty. Once we run the command, we will be connected into the container, and all commands at this point are running from inside the container.
 
 ```
 docker run -i -t ubuntu /bin/bash
@@ -106,7 +108,7 @@ ipcs
 ```
 
 
-**django app**
+**- django app**
 
 Ref:
 * http://developer.rackspace.com/blog/zero-to-peanut-butter-docker-time-in-78-seconds.html
@@ -136,7 +138,7 @@ http://www.slideshare.net/CohesiveFT/docker-meetup-london
 Now you can start up a browser on your host and connect to the docker vm on the port returned above.
 
 
-**create an image** 
+**- create an image** 
 
 Ref: http://kencochrane.net/blog/2013/08/the-docker-guidebook/
 
@@ -146,7 +148,7 @@ A couple definitions to clarify:
 
 This exercise will demonstrate creating an image by commitng changes made to a container. 
 
-We are going to run /bin/bash with the -i and the -t flags. -i tells Docker to keep stdin open even if not attached, and -t is to allocate a pseudo-tty. Once we run the command, we will be connected into the container, and all commands at this point are running from inside the container.
+As above run a container with an interactive bash shell  
 
 ```
 $ docker run -i -t ubuntu /bin/bash  
@@ -182,28 +184,81 @@ C /etc/group-
 C /etc/gshadow
 ```
 
-Let's create the image with docker commit.
+Let's create the image with docker commit.  
 
 ```
-$ docker commit <container id> <your username>/redis
+$ docker commit <container id> <your username>/redis  
 ```
 
-Here is that in action. You can see the new image id below
+Here is that in action. You can see the new image id below.  
 
 ```
-vagrant@docker-test:~$ docker ps -a  
+$ docker ps -a  
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES  
 8c0a8dcbef7e        ubuntu:12.04        /bin/bash           12 minutes ago      Exit 0                                  thirsty_lumiere  
 $ docker commit 8c0a8dcbef7e floehmann/redis  
 453bf1dd96fcf069cf37806f5bcd5ca76c1af1da92a46fab306e77aaa4098f4b  
 ```
   
+The new images will now be available to start new containers.   
+
+```
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+floehmann/redis     latest              453bf1dd96fc        21 minutes ago      225.8 MB
+```
+
+Let's test it out.
+
+The -d tell docker to run it in the background, just like our Hello World daemon above. -p 6379 says to use 6379 as the port for this container.
 
 
+```
+$ docker run -d -p 6379 floehmann/redis /usr/bin/redis-server  
+3e85a22fd31b69fa1c99d36f40bff6f8e07a0d9b6d2a747a338019400aac9625  
+```
+
+Connect to the public ip.
+
+```
+$ docker ps  
+CONTAINER ID        IMAGE                    COMMAND                CREATED              STATUS              PORTS                     NAMES  
+3e85a22fd31b        floehmann/redis:latest   /usr/bin/redis-serve   About a minute ago   Up About a minute   0.0.0.0:49154->6379/tcp   high_hawking  
+```
+
+Get the container ip address and connect with redis-cli.   
+
+```
+# docker inspect <container_id> | grep IPAddress
+$ docker inspect 3e85a22fd31b | grep IPAddress  
+        "IPAddress": "172.17.0.2",  
+$ redis-cli -h 172.17.0.2 -p 6379    
+172.17.0.2:6379> set docker awesome    
+OK   
+172.17.0.2:6379> get docker  
+"awesome"  
+172.17.0.2:6379> exit  
+```
 
 
+Connect to the public IP of the container.  
 
-**removing all docker images and containers**
+```
+# docker port <container_id> 6379 
+$ docker port 3e85a22fd31b 6379  
+0.0.0.0:49154  
+# grab the docker host ip addr
+vagrant@docker-test:~$ ip addr show | grep 192.168.56  
+    inet 192.168.56.5/24 brd 192.168.56.255 scope global eth1  
+# connect to the docker host ip  
+$ redis-cli -h 192.168.56.5 -p 49154  
+192.168.56.5:49154> get docker  
+"awesome"  
+192.168.56.5:49154> exit  
+```
+
+
+**- removing all docker images and containers**
 
 It may be handy after a while to clean up.
 
