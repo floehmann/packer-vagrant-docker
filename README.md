@@ -1,5 +1,5 @@
-Notes on using Packer, Vagrant and Docker
-=========================================
+Packer, Vagrant and Docker
+==========================
 
 Set up a docker vagrant box using packer
 ----
