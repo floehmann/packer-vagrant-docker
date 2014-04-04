@@ -1,8 +1,8 @@
 Notes on using Packer, Vagrant and Docker
------------------------------------------
+=========================================
 
-
-#### Set up a docker vagrant box using packer
+Set up a docker vagrant box using packer
+----
 
 
 The following write up was instrumental in getting started and most of the configs and scripts are based on it.
@@ -34,7 +34,8 @@ vagrant up
 vagrant ssh
 ```
 
-#### Exploring docker
+Exploring docker
+----
 
 
 Most of these examples are directly from the docker site where there is an endless adventure of good docs.
@@ -147,9 +148,59 @@ This exercise will demonstrate creating an image by commitng changes made to a c
 
 We are going to run /bin/bash with the -i and the -t flags. -i tells Docker to keep stdin open even if not attached, and -t is to allocate a pseudo-tty. Once we run the command, we will be connected into the container, and all commands at this point are running from inside the container.
 
-$ docker run -i -t ubuntu /bin/bash
-root@10d9a4ca1750:/# hostname
-10d9a4ca1750
+```
+$ docker run -i -t ubuntu /bin/bash  
+root@10d9a4ca1750:/# hostname  
+root@8c0a8dcbef7e:/# apt-get update  
+root@8c0a8dcbef7e:/# apt-get install redis-server  
+root@8c0a8dcbef7e:/# ps aux  
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND  
+root         1  0.0  0.0  18048  1960 ?        Ss   10:05   0:00 /bin/bash  
+root       123  0.0  0.0  15276  1132 ?        R+   10:11   0:00 ps aux  
+root@8c0a8dcbef7e:/# exit
+```
+
+You can check the diffs in the container with ```docker diff```  
+Files with (C) are changed and files with (A) are additions.
+
+```
+$ docker diff 8c0a8dcbef7e | head -15
+A /.bash_history
+C /dev
+C /dev/console
+C /dev/core
+C /dev/fd
+C /dev/ptmx
+C /dev/stderr
+C /dev/stdin
+C /dev/stdout
+C /etc
+C /etc/bash_completion.d
+A /etc/bash_completion.d/redis-cli
+C /etc/group
+C /etc/group-
+C /etc/gshadow
+```
+
+Let's create the image with docker commit.
+
+```
+$ docker commit <container id> <your username>/redis
+```
+
+Here is that in action. You can see the new image id below
+
+```
+vagrant@docker-test:~$ docker ps -a  
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES  
+8c0a8dcbef7e        ubuntu:12.04        /bin/bash           12 minutes ago      Exit 0                                  thirsty_lumiere  
+$ docker commit 8c0a8dcbef7e floehmann/redis  
+453bf1dd96fcf069cf37806f5bcd5ca76c1af1da92a46fab306e77aaa4098f4b  
+```
+  
+
+
+
 
 
 **removing all docker images and containers**
